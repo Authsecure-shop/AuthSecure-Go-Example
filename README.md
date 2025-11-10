@@ -95,15 +95,15 @@ import (
 )
 
 func main() {
-	client := authsecure.AuthSecure{}
-	client.Api(
+	AuthsecureApp := authsecure.AuthSecure{}
+	AuthsecureApp.Api(
 		"XD",                                  // Application Name
 		"3ezshCmkXrn",                         // Owner ID
 		"7a8bfeb28afcd690812ee5de010a6860",    // Application Secret
 		"1.0",                                 // Application Version
 	)
 
-	client.Init()
+	AuthsecureApp.Init()
 
 	fmt.Println("\n[1] Login\n[2] Register\n[3] License Login\n[4] Exit")
 	fmt.Print("Choose option: ")
@@ -120,7 +120,7 @@ func main() {
 		username, _ := reader.ReadString('\n')
 		fmt.Print("Password: ")
 		password, _ := reader.ReadString('\n')
-		client.Login(strings.TrimSpace(username), strings.TrimSpace(password))
+		AuthsecureApp.Login(strings.TrimSpace(username), strings.TrimSpace(password))
 
 	case "2":
 		fmt.Print("Username: ")
@@ -129,12 +129,12 @@ func main() {
 		password, _ := reader.ReadString('\n')
 		fmt.Print("License: ")
 		license, _ := reader.ReadString('\n')
-		client.Register(strings.TrimSpace(username), strings.TrimSpace(password), strings.TrimSpace(license))
+		AuthsecureApp.Register(strings.TrimSpace(username), strings.TrimSpace(password), strings.TrimSpace(license))
 
 	case "3":
 		fmt.Print("License: ")
 		license, _ := reader.ReadString('\n')
-		client.License(strings.TrimSpace(license))
+		AuthsecureApp.License(strings.TrimSpace(license))
 
 	default:
 		fmt.Println("Goodbye!")
@@ -149,8 +149,8 @@ func main() {
 1. **Initialization**
 
    ```go
-   client.Api("AppName", "OwnerID", "Secret", "Version")
-   client.Init()
+   AuthsecureApp.Api("AppName", "OwnerID", "Secret", "Version")
+   AuthsecureApp.Init()
    ```
 
    This verifies your app with AuthSecure and starts a session.
@@ -158,7 +158,7 @@ func main() {
 2. **Login**
 
    ```go
-   client.Login("username", "password")
+   AuthsecureApp.Login("username", "password")
    ```
 
    Authenticates user credentials and HWID.
@@ -166,7 +166,7 @@ func main() {
 3. **Register**
 
    ```go
-   client.Register("username", "password", "license_key")
+   AuthsecureApp.Register("username", "password", "license_key")
    ```
 
    Registers a new user to your app with a valid license key.
@@ -174,7 +174,7 @@ func main() {
 4. **License Login**
 
    ```go
-   client.License("license_key")
+   AuthsecureApp.License("license_key")
    ```
 
    Logs in using license only (no username or password required).
@@ -260,9 +260,14 @@ myapp/
 Then just call:
 
 ```go
-authclient := authsecure.AuthSecure{}
-authclient.Api("MyApp", "ownerid", "secret", "1.0")
-authclient.Init()
+authAuthsecureApp := authsecure.AuthSecure{}
+AuthsecureApp.Api(
+	"XD",
+	"3ezshCmkXrn",
+	"7a8bfeb28afcd690812ee5de010a6860",
+	"1.0",
+)
+authAuthsecureApp.Init()
 ```
 
 ---
@@ -276,7 +281,7 @@ Free for public & private integration.
 
 ## 👨‍💻 Author
 
-Built with ❤️ by **@yourgithubusername**
+Built with ❤️ by **@Authsecure-shop**
 For official documentation: [AuthSecure API Docs](https://authsecure.shop)
 
 ---
